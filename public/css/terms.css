@@ -1,0 +1,156 @@
+/* header */
+#header {
+    position: relative;
+    height: 40px;
+    padding-top: 10px;
+    background-color: white;
+}
+
+#header-wrap {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#header-title {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#header-cancelBtn {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    z-index: 2;
+}
+
+#header-cancelBtn img {
+    height: 15px;
+}
+
+/* notice */
+#notice-wrap {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 20px 0;
+}
+
+/* terms */
+.term-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+#accept .term-item > div:last-child {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.term-item:hover {
+    opacity: 0.75;
+}
+
+.term-item input {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.checkmark::after {
+    display: inline-block;
+    text-align: center;
+    content: '✔';
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+}
+
+input:checked + .checkmark {
+    background-color: #28c1bc;
+}
+
+/* age */
+.age-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 60px;
+    padding-left: 10px;
+    background-color: rgb(210, 210, 210);
+    border-radius: 5px;
+}
+
+.age-item:hover {
+    opacity: 0.75;
+}
+
+.age-item input {
+    display: none;
+}
+
+.radiomark {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.radiomark::after {
+    position: absolute;
+    top: -10px;
+    text-align: center;
+    font-size: 25px;
+    content: '•';
+    color: white;
+    width: 20px;
+    border-radius: 20px;
+}
+
+input:checked + .radiomark {
+    background-color: #28c1bc;
+}
+
+.age-item-title {
+    font-weight: bold;
+}
+
+.age-item-desc {
+    font-size: 12px;
+    color: grey;
+}
+
+.age-item img {
+    position: absolute;
+    right: 0px;
+    height: 60px;
+    justify-self: flex-end;
+}
+
+/* next */
+#next-nextBtn {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-top: 160px;
+    font-size: 16px;
+    color: white;
+    background-color: #28c1bc;
+    border-radius: 10px;
+}
