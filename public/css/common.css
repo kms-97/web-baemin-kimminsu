@@ -19,6 +19,12 @@ a {
     color: black;
 }
 
+hr {
+    border: none;
+    border-bottom: solid grey 0.5px;
+    margin: 0;
+}
+
 button, input {
     border: none;
     padding: 0;
@@ -33,4 +39,10 @@ input:focus {
 .container {
     width: 360px;
     margin: 0 auto;
+}
+
+/* color variable */
+:root {
+    --primary: rgb(180 180 180);
+    --secondary: #28c1bc;
 }
