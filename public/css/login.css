@@ -1,0 +1,105 @@
+/* header */
+#header {
+    position: relative;
+    height: 40px;
+    padding-top: 10px;
+    background-color: white;
+}
+
+#header-wrap {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#header-title {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#cancelBtn {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    z-index: 2;
+}
+
+#cancelBtn img {
+    height: 15px;
+}
+
+/* login form */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    background-color: white;
+}
+
+#login-form > input {
+    height: 40px;
+    border-bottom: solid 1px grey;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+#login-form-submitBtn {
+    height: 50px;
+    margin-top: 30px;
+    font-size: 16px;
+    color: white;
+    background-color: #28c1bc;
+    border-radius: 10px;
+}
+
+/* 아이디-비밀번호 찾기 */
+#find-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#find-wrap > div {
+    padding: 0 10px;
+    font-size: 12px;
+    color: grey;
+}
+
+/* social login */
+#social {
+    margin-top: 220px;
+}
+
+.social-logo {
+    height: 15px;
+    margin-right: 10px;
+}
+
+.social-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+/* signup */
+#signup {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#signup a {
+    margin-left: 5px;
+    color: #28c1bc;
+}
+
+
