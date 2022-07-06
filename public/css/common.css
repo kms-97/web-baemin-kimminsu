@@ -1,0 +1,14 @@
+html {
+    background-color: blanchedalmond;
+}
+
+body {
+    width: 500px;
+    margin: 0 auto;
+    background-color: rgb(210, 210, 210);
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}
