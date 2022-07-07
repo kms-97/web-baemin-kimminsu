@@ -1,9 +1,9 @@
 extends base.pug
 block css
-    link(rel="stylesheet", href="css/phone.css")
+    link(rel="stylesheet", href="/css/phone.css")
 
 block js
-    script(src="js/phone.js" defer) 
+    script(src="/js/phone.js" defer) 
 
 block content
     header#header
@@ -12,7 +12,7 @@ block content
         div.container
             div#header-wrap
                 div#header-title 회원가입
-        a(href='/detail')
+        a(href='/signup/detail')
             button#header-nextBtn(disabled) 다음
     section#phone
         div.container
