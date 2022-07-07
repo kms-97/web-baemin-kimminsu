@@ -5,6 +5,8 @@
     const $phoneInputRemoveBtn = document.getElementById('phone-remove');
     const $confirmStartBtn = document.getElementById('confirm-start-btn');
     const $confirmSection = document.getElementById('confirm');
+    const $confirmInput = document.getElementById('confirm-input');
+    let confirmNumber = '';
 
     function removeNotNumberChar(str) {
         return str.replace(/[^\d]/g, '');
@@ -34,6 +36,13 @@
         return randomNumber.fill().map(() => Math.floor(Math.random() * 8 + 1)).join('');
     }
 
+    function insertRandomNumberAfter2Seconds() {
+        setTimeout(() => {
+            confirmNumber = generateRandomNumber();
+            $confirmInput.value = confirmNumber;
+        }, 2000);
+    }
+
     $phoneInput.addEventListener('keyup', () => {
         const numStr = removeNotNumberChar($phoneInput.value);
         $phoneInput.value = insertHyhpen(numStr);
@@ -59,5 +68,7 @@
         $phoneInput.setAttribute('readonly', true);
         $phoneInput.setAttribute('disabled', true);
         $confirmSection.style.display = 'block';
+
+        insertRandomNumberAfter2Seconds();
     })
 })();
