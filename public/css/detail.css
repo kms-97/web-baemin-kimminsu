@@ -65,6 +65,10 @@ input {
     margin-right: 5px;
 }
 
+input.err {
+    border-bottom: solid 1px red;
+}
+
 /* email */
 #email-wrap {
     position: relative;
@@ -115,4 +119,9 @@ input {
 .remove img {
     width: 12px;
     height: 12px;
+}
+
+/* 에러 메세지 */
+.error-msg {
+    color: red;
 }
