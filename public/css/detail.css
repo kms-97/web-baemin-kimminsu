@@ -86,7 +86,7 @@ input {
     position: absolute;
     bottom: 10px;
     right: 0px;
-    display: inline-block;
+    display: none;
     content: '✔';
     text-align: center;
     color: var(--mint);
@@ -99,7 +99,7 @@ input {
     position: absolute;
     bottom: 12px;
     right: 5px;
-    display: inline-block;
+    display: none;
     text-align: center;
     cursor: pointer;
 }
