@@ -6,6 +6,7 @@
     const $confirmStartBtn = document.getElementById('confirm-start-btn');
     const $confirmSection = document.getElementById('confirm');
     const $confirmInput = document.getElementById('confirm-input');
+    const $confirmRetry = document.getElementById('confirm-retry');
     let confirmNumber = '';
 
     function removeNotNumberChar(str) {
@@ -69,6 +70,10 @@
         $phoneInput.setAttribute('disabled', true);
         $confirmSection.style.display = 'block';
 
+        insertRandomNumberAfter2Seconds();
+    })
+
+    $confirmRetry.addEventListener('click', () => {
         insertRandomNumberAfter2Seconds();
     })
 })();
