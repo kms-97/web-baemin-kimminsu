@@ -7,8 +7,9 @@ block js
 
 block content
     header#header
-        button#header-backwardBtn
-            img(src='../img/arrow.svg')
+        a(href='javascript:window.history.back();') 
+            button#header-backwardBtn
+                img(src='../img/arrow.svg')
         div.container
             div#header-wrap
                 div#header-title 회원가입
