@@ -4,6 +4,7 @@
     const $phoneInputValidMark = document.getElementById('phone-valitdate');
     const $phoneInputRemoveBtn = document.getElementById('phone-remove');
     const $confirmStartBtn = document.getElementById('confirm-start-btn');
+    const $confirmSection = document.getElementById('confirm');
 
     function removeNotNumberChar(str) {
         return str.replace(/[^\d]/g, '');
@@ -46,5 +47,12 @@
 
     $phoneInputRemoveBtn.addEventListener('click', () => {
         $phoneInput.value = '';
+    })
+
+    $confirmStartBtn.addEventListener('click', () => {
+        $confirmStartBtn.style.display = 'none';
+        $phoneInput.setAttribute('readonly', true);
+        $phoneInput.setAttribute('disabled', true);
+        $confirmSection.style.display = 'block';
     })
 })();
