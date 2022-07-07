@@ -65,6 +65,7 @@
 /* confirm input */
 #confirm {
     margin-top: 40px;
+    display: none;
 }
 
 #confirm-input-wrap {
