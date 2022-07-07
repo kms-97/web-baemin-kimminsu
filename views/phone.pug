@@ -2,6 +2,9 @@ extends base.pug
 block css
     link(rel="stylesheet", href="css/phone.css")
 
+block js
+    script(src="js/phone.js" defer) 
+
 block content
     header#header
         button#header-backwardBtn
@@ -28,5 +31,5 @@ block content
                     img(src='../img/cancel.png')
             div#confirm-retry 인증번호 다시받기
             div#confirm-start-wrap
-                button#confirm-start-btn 인증번호 받기
+                button#confirm-start-btn(disabled) 인증번호 받기
 
