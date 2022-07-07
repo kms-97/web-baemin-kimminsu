@@ -1,0 +1,126 @@
+/* header */
+#header {
+    position: relative;
+    height: 40px;
+    padding-top: 10px;
+    background-color: white;
+}
+
+#header-wrap {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#header-title {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#header-backwardBtn {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+
+#header-backwardBtn img {
+    height: 15px;
+}
+
+#header-nextBtn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#header-nextBtn, .disable {
+    color: var(--grey);
+}
+
+#header-nextBtn:hover:not(.disable) {
+    opacity: 0.75;
+}
+
+/* phone input */
+#phone {
+    margin-top: 40px;
+}
+
+#phone-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#phone-wrap input {
+    height: 40px;
+    border-bottom: solid 1px var(--grey);
+    font-size: 16px;
+}
+
+/* confirm input */
+#confirm {
+    margin-top: 40px;
+}
+
+#confirm-input-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#confirm-input-wrap input {
+    height: 40px;
+    border-bottom: solid 1px var(--grey);
+    font-size: 16px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#confirm-retry {
+    margin-top: 20px;
+    text-align: end;
+    color: var(--mint);
+}
+
+#confirm-start-btn {
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 16px;
+    border: 1px solid var(--grey);
+    border-radius: 10px;
+}
+
+/* validate mark */
+.validate::after {
+    position: absolute;
+    bottom: 10px;
+    right: 0px;
+    display: inline-block;
+    content: '✔';
+    text-align: center;
+    color: var(--mint);
+    width: 20px;
+    height: 20px;
+}
+
+/* input remove btn */
+.remove {
+    position: absolute;
+    bottom: 12px;
+    right: 5px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.remove img {
+    width: 12px;
+    height: 12px;
+}
