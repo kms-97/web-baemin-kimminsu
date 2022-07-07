@@ -1,6 +1,7 @@
 (function() {
     const $phoneInput = document.getElementById('phone-input');
     const $phoneInputValidMark = document.getElementById('phone-valitdate');
+    const $phoneInputRemoveBtn = document.getElementById('phone-remove');
 
     function removeNotNumberChar(str) {
         return str.replace(/[^\d]/g, '');
@@ -14,15 +15,22 @@
         return /^\d{3}-\d{4}-\d{4}$/.test(str);
     }
 
+    function changePhoneInputValidState() {
+        $phoneInputValidMark.style.display = isPhoneNumberFormat($phoneInput.value) ? 'block' : 'none';
+    }
+
     $phoneInput.addEventListener('keyup', () => {
         const numStr = removeNotNumberChar($phoneInput.value);
-        const hypenStr = insertHyhpen(numStr);
-        $phoneInput.value = hypenStr 
+        $phoneInput.value = insertHyhpen(numStr);
+    })
 
-        if (isPhoneNumberFormat(hypenStr)) {
-            $phoneInputValidMark.style.display = 'block';
-        } else {
-            $phoneInputValidMark.style.display = 'none';
-        }
+    $phoneInput.addEventListener('focusin', () => {
+        $phoneInputRemoveBtn.style.display = 'block';
+        $phoneInputValidMark.style.display = 'none';
+    })
+
+    $phoneInput.addEventListener('focusout', () => {
+        $phoneInputRemoveBtn.style.display = 'none';
+        changePhoneInputValidState();
     })
 })();
