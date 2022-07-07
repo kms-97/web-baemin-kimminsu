@@ -2,6 +2,9 @@ extends base.pug
 block css
     link(rel="stylesheet", href="css/terms.css")
 
+block js
+    script(src="js/terms.js" defer)
+
 block content
     header#header
         button#header-cancelBtn
@@ -19,7 +22,7 @@ block content
         div.container
             div#accept-wrap
                 label.term-item
-                    input(type='checkbox')
+                    input(type='checkbox')#accept-checkbox
                     div.checkmark
                     div 전체동의
             hr
@@ -27,24 +30,24 @@ block content
     section#term
         div.container
             div#term-wrap
-                label.term-item.required
-                    input(type='checkbox')
+                label.term-item
+                    input(type='checkbox').required
                     div.checkmark
                     | 배달의민족 이용약관 동의
-                label.term-item.required
-                    input(type='checkbox')
+                label.term-item
+                    input(type='checkbox').required
                     div.checkmark
                     | 전자금융거래 이용약관 동의
-                label.term-item.required
-                    input(type='checkbox')
+                label.term-item
+                    input(type='checkbox').required
                     div.checkmark
                     | 개인정보 수집이용 동의
-                label.term-item.optinal
-                    input(type='checkbox')
+                label.term-item
+                    input(type='checkbox').optional
                     div.checkmark
                     | 개인정보 제3자 제공 동의 (선택)
-                label.term-item.optinal
-                    input(type='checkbox')
+                label.term-item
+                    input(type='checkbox').optional
                     div.checkmark
                     | 마케팅 정보 메일, SMS 수신 동의 (선택)
             hr
@@ -65,4 +68,5 @@ block content
                     img.age-item-icon(src='../img/child.png')
     section#next
         div.container
-            button#next-nextBtn 다음으로
+            a(href='/phone')
+                button(disabled)#next-nextBtn 다음으로

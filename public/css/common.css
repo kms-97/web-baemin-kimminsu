@@ -34,7 +34,7 @@ hr {
 }
 
 button:disabled {
-    cursor: none;
+    cursor: default;
 }
 
 button, input {
