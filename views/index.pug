@@ -9,14 +9,19 @@ block content
                 div#header-title My배민
     section#banner
         img(src='../img/banner.png')
-    section#user
-        div.container
-    section#login
-        a(href='/login')
+    if nickname
+        section#user
             div.container
-                div#login-wrap
-                    img#login-thumbnail(src='../img/user.png')
-                    div#login-title 로그인해주세요 
+                div#user-wrap
+                    img#user-thumbnail(src='../img/user.png')
+                    div#user-nickname 안녕하세요, #{nickname}님!
+    else
+        section#login
+            a(href='/login')
+                div.container
+                    div#login-wrap
+                        img#login-thumbnail(src='../img/user.png')
+                        div#login-title 로그인해주세요 
     nav#nav
         ul#nav-items
             li.nav-item 
