@@ -22,10 +22,12 @@ const getAllUsers = () => {
     return db.data.users;
 }
 
-const getUserById = (id) => {
+const getUserByEmail = (email) => {
     db.data.users.forEach((user) => {
-        if (user.id === id) return user;
+        if (user.email === email) return user;
     })
+
+    return null;
 }
 
 export {
