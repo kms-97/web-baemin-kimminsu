@@ -89,6 +89,10 @@
         insertRandomNumberAfter2Seconds();
     })
 
+    $confirmInputRemoveBtn.addEventListener('click', () => {
+        $confirmInput.value = '';
+    })
+
     $confirmInput.addEventListener('input', () => {
         changeConfirmInputValidState();
     })
