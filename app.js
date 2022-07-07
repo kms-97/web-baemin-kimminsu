@@ -1,16 +1,30 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
 import { getAllUsers, registUser, getUserByEmail } from './dao/userDao.js';
 
 const app = express();
+const SECRET = 'randomString';
 
 app.set('view engine', 'pug');
 
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser(SECRET));
+app.use(session({
+    resave: false,
+    saveUninitialized: false,
+    secret: SECRET,
+    cookie: {
+        httpOnly: true,
+        secure: false,
+    },
+}))
 
 app.get('/', (req, res) => {
-    res.render('index');
+    const user = req.session.user;
+    res.render('index', { nickname: user ? user.nickname : '' });
 })
 
 app.get('/login', (req, res) => {
@@ -41,7 +55,7 @@ app.post('/login', (req, res) => {
     const user = getUserByEmail(email);
 
     if (user && user.email === email && user.password === password) {
-        console.log('logined', user);
+        req.session.user = user;
         res.redirect('/');
     } else {
         res.status(204).send();

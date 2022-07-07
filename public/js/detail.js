@@ -118,19 +118,28 @@
 
     $nicknameInput.addEventListener('change', () => {
         const nickname = $nicknameInput.value;
-        if (nickname) {
-            showValidMark($nicknameInput, $nicknameValidMark, 'block');
-        }
+        if (nickname) showValidMark($nicknameInput, $nicknameValidMark, 'block');
         else hideValidMark($nicknameInput, $nicknameValidMark);
     })
 
     $passwordInput.addEventListener('change', () => {
         const password = $passwordInput.value;
 
-        if (!isOverLength(password, 10)) return inputError($passwordInput, $passwordErrorMsg, '비밀번호는 10자 이상이어야 합니다.');
-        if (!isContainsLeastTwoType(password)) return inputError($passwordInput, $passwordErrorMsg, '영어 대문자, 소문자, 숫자, 특수문자 중 2종류 이상을 조합해야 합니다.');
-        if (isContainSameNumber(password) || isContainLinkedNumber(password)) return inputError($passwordInput, $passwordErrorMsg, '같은 숫자 또는 연속된 숫자를 3개 이상 입력할 수 없습니다.');
-
+        if (!isOverLength(password, 10)) {
+            const msg = '비밀번호는 10자 이상이어야 합니다.';
+            return inputError($passwordInput, $passwordErrorMsg, msg);
+        }
+        
+        if (!isContainsLeastTwoType(password)) {
+            const msg = '영어 대문자, 소문자, 숫자, 특수문자 중 2종류 이상을 조합해야 합니다.';
+            return inputError($passwordInput, $passwordErrorMsg, msg);
+        }
+        
+        if (isContainSameNumber(password) || isContainLinkedNumber(password)) {
+            const msg = '같은 숫자 또는 연속된 숫자를 3개 이상 입력할 수 없습니다.';
+            return inputError($passwordInput, $passwordErrorMsg, msg);
+        }
+        
         deleteError($passwordInput, $passwordErrorMsg);
         showValidMark($passwordInput, $passwordValidMark, 'inline-block');
     })
