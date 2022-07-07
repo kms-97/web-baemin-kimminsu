@@ -8,6 +8,8 @@
     const $confirmInput = document.getElementById('confirm-input');
     const $confirmRetry = document.getElementById('confirm-retry');
     const $confirmValidMark = document.getElementById('confirm-valitdate');
+    const $confirmInputRemoveBtn = document.getElementById('confirm-remove');
+    const $confirmInputLabel = document.getElementById('confirm-input-wrap');
     let confirmNumber = '';
 
     function removeNotNumberChar(str) {
@@ -20,6 +22,14 @@
 
     function isPhoneNumberFormat(str) {
         return /^\d{3}-\d{4}-\d{4}$/.test(str);
+    }
+
+    function changeConfirmInputValidState() {
+        if (confirmNumber && confirmNumber === $confirmInput.value) {
+            $confirmValidMark.style.display = 'block';
+        } else {
+            $confirmValidMark.style.display = 'none';
+        }
     }
 
     function changePhoneInputValidState() {
@@ -80,11 +90,17 @@
     })
 
     $confirmInput.addEventListener('input', () => {
-        console.log(confirmNumber, $confirmInput.value)
-        if (confirmNumber === $confirmInput.value) {
-            $confirmValidMark.style.display = 'block';
-        } else {
-            $confirmValidMark.style.display = 'none';
-        }
+        changeConfirmInputValidState();
+    })
+
+    $confirmInput.addEventListener('focusin', () => {
+        $confirmInputRemoveBtn.style.display = 'block';
+        $confirmValidMark.style.display = 'none';
+    })
+
+    window.addEventListener('click', (e) => {
+        if (e.target.closest('label') === $confirmInputLabel) return;
+        $confirmInputRemoveBtn.style.display = 'none';
+        changeConfirmInputValidState();
     })
 })();
