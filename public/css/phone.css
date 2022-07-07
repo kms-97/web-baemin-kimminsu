@@ -95,6 +95,12 @@
     font-size: 16px;
     border: 1px solid var(--grey);
     border-radius: 10px;
+    cursor: pointer;
+}
+
+#confirm-start-btn:disabled {
+    color: var(--grey);
+    cursor: default;
 }
 
 /* validate mark */
