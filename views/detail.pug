@@ -2,6 +2,9 @@ extends base.pug
 block css
     link(rel="stylesheet", href="css/detail.css")
 
+block js
+    script(src="js/detail.js" defer) 
+
 block content
     header#header
         button#header-backwardBtn
@@ -16,7 +19,7 @@ block content
                 label#email-label
                     | 이메일
                     input(type='email')#email-input
-                    div#email-valitdate.validate
+                    div#email-validate.validate
                     button#email-remove.remove
                         img(src='../img/cancel.png')
                 button#email-duplicate 중복확인
@@ -26,7 +29,7 @@ block content
                 label#nickname-wrap
                     | 닉네임
                     input(type='text')#nickname-input
-                    div#nickname-valitdate.validate
+                    div#nickname-validate.validate
                     button#nickname-remove.remove
                         img(src='../img/cancel.png')
         section#password
@@ -34,7 +37,7 @@ block content
                 label#password-wrap
                     | 비밀번호
                     input(type='password')#password-input
-                    div#phone-valitdate.validate
+                    div#phone-validate.validate
                     button#phone-remove.remove
                         img(src='../img/cancel.png')
         section#birth
@@ -42,7 +45,7 @@ block content
                 label#birth-wrap
                     | 생년월일
                     input(type='text')#birth-input
-                    div#birth-valitdate.validate
+                    div#birth-validate.validate
                     button#birth-remove.remove
                         img(src='../img/cancel.png')
 
