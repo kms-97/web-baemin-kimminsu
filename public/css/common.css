@@ -33,6 +33,10 @@ hr {
     margin: 0;
 }
 
+button:disabled {
+    cursor: none;
+}
+
 button, input {
     border: none;
     padding: 0;
