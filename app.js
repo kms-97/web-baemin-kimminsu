@@ -22,4 +22,8 @@ app.get('/phone', (req, res) => {
     res.render('phone');
 })
 
+app.get('/detail', (req, res) => {
+    res.render('detail');
+})
+
 app.listen(3000);
