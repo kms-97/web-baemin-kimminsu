@@ -37,7 +37,7 @@
     font-weight: bold;
 }
 
-#header-nextBtn, .disable {
+#header-nextBtn .disable {
     color: var(--grey);
 }
 
