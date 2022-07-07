@@ -45,7 +45,8 @@ block content
             div.container
                 label#birth-wrap
                     | 생년월일
-                    input(type='text')#birth-input
+                    input(type='text' maxlength='10')#birth-input
+                    div#birth-error.error-msg
                     div#birth-validate.validate
                     button#birth-remove.remove
                         img(src='../img/cancel.png')
