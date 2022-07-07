@@ -1,5 +1,12 @@
+/* color variable */
+:root {
+    --grey: rgb(180 180 180);
+    --mint: #28c1bc;
+    --light-grey: #f6f6f6
+}
+
 html {
-    background-color: blanchedalmond;
+    background-color: var(--light-grey);
 }
 
 body {
@@ -7,6 +14,7 @@ body {
     height: 800px;
     margin: 0 auto;
     background-color: white;
+    border: 1px solid black;
 }
 
 ul {
@@ -21,7 +29,7 @@ a {
 
 hr {
     border: none;
-    border-bottom: solid grey 0.5px;
+    border-bottom: solid var(--grey) 0.5px;
     margin: 0;
 }
 
@@ -39,10 +47,4 @@ input:focus {
 .container {
     width: 360px;
     margin: 0 auto;
-}
-
-/* color variable */
-:root {
-    --primary: rgb(180 180 180);
-    --secondary: #28c1bc;
 }
