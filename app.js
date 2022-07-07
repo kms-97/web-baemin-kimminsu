@@ -18,4 +18,8 @@ app.get('/terms', (req, res) => {
     res.render('terms');
 })
 
+app.get('/phone', (req, res) => {
+    res.render('phone');
+})
+
 app.listen(3000);
