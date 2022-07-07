@@ -3,6 +3,7 @@
     const $phoneInputLabel = document.getElementById('phone-wrap');
     const $phoneInputValidMark = document.getElementById('phone-valitdate');
     const $phoneInputRemoveBtn = document.getElementById('phone-remove');
+    const $confirmStartBtn = document.getElementById('confirm-start-btn');
 
     function removeNotNumberChar(str) {
         return str.replace(/[^\d]/g, '');
@@ -17,7 +18,14 @@
     }
 
     function changePhoneInputValidState() {
-        $phoneInputValidMark.style.display = isPhoneNumberFormat($phoneInput.value) ? 'block' : 'none';
+        const isValid = isPhoneNumberFormat($phoneInput.value);
+        $phoneInputValidMark.style.display = isValid ? 'block' : 'none';
+        changeConfirmStartBtnState(isValid);
+    }
+
+    function changeConfirmStartBtnState(boolean) {
+        if (boolean) $confirmStartBtn.removeAttribute('disabled');
+        else $confirmStartBtn.setAttribute('disabled', true);
     }
 
     $phoneInput.addEventListener('keyup', () => {
