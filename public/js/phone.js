@@ -10,6 +10,7 @@
     const $confirmValidMark = document.getElementById('confirm-valitdate');
     const $confirmInputRemoveBtn = document.getElementById('confirm-remove');
     const $confirmInputLabel = document.getElementById('confirm-input-wrap');
+    const $nextBtn = document.getElementById('header-nextBtn');
     let confirmNumber = '';
 
     function removeNotNumberChar(str) {
@@ -27,9 +28,16 @@
     function changeConfirmInputValidState() {
         if (confirmNumber && confirmNumber === $confirmInput.value) {
             $confirmValidMark.style.display = 'block';
+            changeNextBtnState(true);
         } else {
             $confirmValidMark.style.display = 'none';
+            changeNextBtnState(false);
         }
+    }
+
+    function changeNextBtnState(boolean) {
+        if(boolean) $nextBtn.removeAttribute('disabled');
+        else $nextBtn.setAttribute('disabled', true);
     }
 
     function changePhoneInputValidState() {
