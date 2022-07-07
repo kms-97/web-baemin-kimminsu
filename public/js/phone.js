@@ -29,6 +29,11 @@
         else $confirmStartBtn.setAttribute('disabled', true);
     }
 
+    function generateRandomNumber() {
+        const randomNumber = new Array(4);
+        return randomNumber.fill().map(() => Math.floor(Math.random() * 8 + 1)).join('');
+    }
+
     $phoneInput.addEventListener('keyup', () => {
         const numStr = removeNotNumberChar($phoneInput.value);
         $phoneInput.value = insertHyhpen(numStr);
