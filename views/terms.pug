@@ -1,9 +1,9 @@
 extends base.pug
 block css
-    link(rel="stylesheet", href="css/terms.css")
+    link(rel="stylesheet", href="/css/terms.css")
 
 block js
-    script(src="js/terms.js" defer)
+    script(src="/js/terms.js" defer)
 
 block content
     header#header
@@ -68,5 +68,5 @@ block content
                     img.age-item-icon(src='../img/child.png')
     section#next
         div.container
-            a(href='/phone')
+            a(href='/signup/phone')
                 button(disabled)#next-nextBtn 다음으로
