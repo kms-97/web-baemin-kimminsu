@@ -1,6 +1,6 @@
 (function() {
     function removeNotNumberChar(str) {
-        return str.replace(/\d/g, '');
+        return str.replace(/[^\d]/g, '');
     }
 
     function insertHyhpen(str) {
