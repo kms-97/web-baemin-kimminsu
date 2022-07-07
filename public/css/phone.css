@@ -89,6 +89,7 @@
     margin-top: 20px;
     text-align: end;
     color: var(--mint);
+    cursor: pointer;
 }
 
 #confirm-start-btn {
