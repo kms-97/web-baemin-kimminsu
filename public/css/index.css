@@ -21,7 +21,7 @@
 /* banner */
 #banner {
     height: 150px;
-    background-color: var(--primary);
+    background-color: var(--grey);
 }
 
 #banner img {
@@ -53,7 +53,7 @@
 }
 
 #login-title {
-    color: grey;
+    color: var(--grey);
     font-size: 16px;
 }
 
@@ -71,10 +71,10 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    border: solid 0.5px var(--primary);
+    border: solid 0.5px var(--light-grey);
     border-collapse: collapse;
     width: 33.3333%;
-    height: 80px;
+    height: 90px;
 }
 
 .nav-item:nth-child(3n + 1) {
@@ -93,13 +93,12 @@
 
 .nav-item-title {
     font-size: 12px;
-    color: var(--primary);
+    color: var(--grey);
 }
 
 /* campaign */
 #campaign {
     height: 60px;
-    margin: 10px 0px;
     background-color: white;
 }
 
@@ -126,15 +125,36 @@
 
 .notice-item {
     padding: 15px 0;
+    border-bottom: 1px solid var(--light-grey);
 }
 
 .notice-item-title {
+    display: flex;
+    align-items: center;
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 5px;
+}
+
+.new::after {
+    display: inline-block;
+    content: "";
+    background-image: url('../img/new.png');
+    background-size: cover;
+    width: 25px;
+    height: 16px;
+    margin-left: 5px;
 }
 
 .notice-item-desc {
     font-size: 12px;
-    color: var(--primary);
+    color: var(--grey);
+}
+
+/* seperator */
+.seperator {
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 15px;
+    background-color: var(--light-grey);
 }
