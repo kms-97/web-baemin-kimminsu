@@ -1,5 +1,6 @@
 (function() {
     const $phoneInput = document.getElementById('phone-input');
+    const $phoneInputValidMark = document.getElementById('phone-valitdate');
 
     function removeNotNumberChar(str) {
         return str.replace(/[^\d]/g, '');
@@ -15,6 +16,13 @@
 
     $phoneInput.addEventListener('keyup', () => {
         const numStr = removeNotNumberChar($phoneInput.value);
-        $phoneInput.value = insertHyhpen(numStr);
+        const hypenStr = insertHyhpen(numStr);
+        $phoneInput.value = hypenStr 
+
+        if (isPhoneNumberFormat(hypenStr)) {
+            $phoneInputValidMark.style.display = 'block';
+        } else {
+            $phoneInputValidMark.style.display = 'none';
+        }
     })
 })();
