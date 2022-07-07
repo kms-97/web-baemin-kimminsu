@@ -37,12 +37,17 @@
     font-weight: bold;
 }
 
-#header-nextBtn .disable {
+#header-nextBtn:disabled {
     color: var(--grey);
 }
 
-#header-nextBtn:hover:not(.disable) {
+#header-nextBtn:hover:not(:disabled) {
     opacity: 0.75;
+}
+
+/* additional info */
+#additional {
+    display: none;
 }
 
 /* input form */
@@ -58,6 +63,10 @@ input {
     border-bottom: solid 1px var(--grey);
     font-size: 16px;
     margin-right: 5px;
+}
+
+input.err {
+    border-bottom: solid 1px red;
 }
 
 /* email */
@@ -82,11 +91,14 @@ input {
 }
 
 /* validate mark */
+.validate {
+    display: none;
+}
+
 .validate::after {
     position: absolute;
     bottom: 10px;
     right: 0px;
-    display: inline-block;
     content: '✔';
     text-align: center;
     color: var(--mint);
@@ -99,7 +111,7 @@ input {
     position: absolute;
     bottom: 12px;
     right: 5px;
-    display: inline-block;
+    display: none;
     text-align: center;
     cursor: pointer;
 }
@@ -107,4 +119,9 @@ input {
 .remove img {
     width: 12px;
     height: 12px;
+}
+
+/* 에러 메세지 */
+.error-msg {
+    color: red;
 }
