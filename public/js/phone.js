@@ -1,4 +1,6 @@
 (function() {
+    const $phoneInput = document.getElementById('phone-input');
+
     function removeNotNumberChar(str) {
         return str.replace(/[^\d]/g, '');
     }
@@ -10,4 +12,9 @@
     function isPhoneNumberFormat(str) {
         return /^\d{3}-\d{4}-\d{4}$/.test(str);
     }
+
+    $phoneInput.addEventListener('keyup', () => {
+        const numStr = removeNotNumberChar($phoneInput.value);
+        $phoneInput.value = insertHyhpen(numStr);
+    })
 })();
