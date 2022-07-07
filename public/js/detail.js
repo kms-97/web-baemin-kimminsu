@@ -8,6 +8,9 @@
     const $passwordInput = document.getElementById('password-input');
     const $passwordErrorMsg = document.getElementById('password-error');
     const $passwordValidMark = document.getElementById('password-validate');
+    const $birthInput = document.getElementById('birth-input');
+    const $birthErrorMsg = document.getElementById('birth-error');
+    const $birthValidMark = document.getElementById('birth-validate');
 
     function inputError($input, $errMsg, msg) {
         $errMsg.innerText = msg;
@@ -37,6 +40,48 @@
         return linkedNumberReg.test(str);
     }
 
+    function removeNotNumberOrDotChar(str) {
+        return str.replace(/[^\d.]/g, '');
+    }
+
+    function isDateFormat(str) {
+        const dateReg = /(\d{4}).(\d{2}).(\d{2})/;
+        return dateReg.test(str);
+    }
+
+    function dateValidation() {
+        const dateInput = $birthInput.value;
+        if (dateInput.length !== 10) return $birthValidMark.style.display = 'none';
+        if (!isDateFormat(dateInput)) return $birthValidMark.style.display = 'none';
+        
+        const date = new Date(dateInput.split('.').join('-'));
+        const timestamp = date.getTime();
+        if (typeof timestamp !== 'number' || Number.isNaN(timestamp)) {
+            return inputError($birthInput, $birthErrorMsg, '유효한 날짜를 입력해주세요.');
+        }
+    
+        $birthErrorMsg.innerText = '';
+        $birthInput.classList.remove('err');
+        $birthValidMark.style.display = 'inline-block';
+    }
+
+    function insertDot(str) {
+        const len = str.length;
+
+        if (len === 4) return `${str}.`;
+        if (len === 6) {
+            if (str[5] > 1) return `${str.slice(0, 5)}0${str[5]}.`
+            else return str;
+        }
+        if (len === 7) return `${str}.`;
+        if (len === 9) {
+            if (str[8] > 3) return `${str.slice(0, 8)}0${str[8]}.`;
+            else return str;
+        }
+
+        return str;
+    }
+
     $emailDuplicationCheckBtn.addEventListener('click', () => {
         const email = $emailInput.value;
         if (!email) return;
@@ -61,5 +106,15 @@
         $passwordErrorMsg.value = '';
         $passwordInput.classList.remove('err');
         $passwordValidMark.style.display = 'block';
+    })
+
+    $birthInput.addEventListener('keyup', (e) => {
+        if(e.key !== "Backspace") {
+            const birth = $birthInput.value;
+            const numStr = removeNotNumberOrDotChar(birth);
+            $birthInput.value = insertDot(numStr);
+        }
+
+        dateValidation();
     })
 })();
