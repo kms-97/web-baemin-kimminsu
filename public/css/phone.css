@@ -35,13 +35,15 @@
     right: 10px;
     font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-#header-nextBtn .disable {
+#header-nextBtn:disabled {
     color: var(--grey);
+    cursor: default;
 }
 
-#header-nextBtn:hover:not(.disable) {
+#header-nextBtn:hover:not(:disabled) {
     opacity: 0.75;
 }
 
