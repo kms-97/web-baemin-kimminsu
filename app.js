@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllUsers, registUser } from './dao/userDao.js';
+import { getAllUsers, registUser, getUserByEmail } from './dao/userDao.js';
 
 const app = express();
 
@@ -33,6 +33,19 @@ app.post('/signup', (req, res) => {
     const user = req.body;
     registUser(user);
     res.redirect('/login');
+})
+
+app.post('/login', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    const user = getUserByEmail(email);
+
+    if (user && user.email === email && user.password === password) {
+        console.log('logined', user);
+        res.redirect('/');
+    } else {
+        res.status(204).send();
+    }
 })
 
 app.listen(3000);

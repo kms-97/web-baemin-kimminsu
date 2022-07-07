@@ -23,9 +23,11 @@ const getAllUsers = () => {
 }
 
 const getUserByEmail = (email) => {
-    db.data.users.forEach((user) => {
+    const users = getAllUsers();
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
         if (user.email === email) return user;
-    })
+    }
 
     return null;
 }
@@ -33,5 +35,5 @@ const getUserByEmail = (email) => {
 export {
     getAllUsers,
     registUser,
-    getUserById,
+    getUserByEmail,
 };

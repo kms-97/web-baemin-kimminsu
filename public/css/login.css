@@ -45,6 +45,10 @@
     margin-top: 30px;
 }
 
+input.err {
+    border-bottom: solid 1px red !important;
+}
+
 #login-form-submitBtn {
     height: 50px;
     margin-top: 30px;
@@ -102,4 +106,7 @@
     color: var(--mint);
 }
 
-
+/* 에러 메세지 */
+.error-msg {
+    color: red;
+}

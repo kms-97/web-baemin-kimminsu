@@ -2,6 +2,9 @@ extends base.pug
 block css
     link(rel="stylesheet", href="css/login.css")
 
+block js
+    script(src="js/login.js" defer) 
+
 block content
     header#header
         button#header-cancelBtn
@@ -11,9 +14,11 @@ block content
                 div#header-title
     section#login
         div.container
-            form#login-form(action="")
-                input(type='text', placeholder='아이디 또는 이메일')#login-form-id
+            form#login-form
+                input(type='text', placeholder='아이디 또는 이메일')#login-form-email
+                div#login-email-error.error-msg
                 input(type='password', placeholder='비밀번호')#login-form-password
+                div#login-password-error.error-msg
                 button(type='submit')#login-form-submitBtn 로그인
     section#find
         div.container
