@@ -37,11 +37,11 @@
     font-weight: bold;
 }
 
-#header-nextBtn .disable {
+#header-nextBtn:disabled {
     color: var(--grey);
 }
 
-#header-nextBtn:hover:not(.disable) {
+#header-nextBtn:hover:not(:disabled) {
     opacity: 0.75;
 }
 
