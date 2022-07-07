@@ -35,13 +35,15 @@
     right: 10px;
     font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-#header-nextBtn .disable {
+#header-nextBtn:disabled {
     color: var(--grey);
+    cursor: default;
 }
 
-#header-nextBtn:hover:not(.disable) {
+#header-nextBtn:hover:not(:disabled) {
     opacity: 0.75;
 }
 
@@ -65,6 +67,7 @@
 /* confirm input */
 #confirm {
     margin-top: 40px;
+    display: none;
 }
 
 #confirm-input-wrap {
@@ -95,9 +98,19 @@
     font-size: 16px;
     border: 1px solid var(--grey);
     border-radius: 10px;
+    cursor: pointer;
+}
+
+#confirm-start-btn:disabled {
+    color: var(--grey);
+    cursor: default;
 }
 
 /* validate mark */
+.validate {
+    display: none;
+}
+
 .validate::after {
     position: absolute;
     bottom: 10px;
@@ -118,6 +131,7 @@
     display: inline-block;
     text-align: center;
     cursor: pointer;
+    display: none;
 }
 
 .remove img {
