@@ -1,5 +1,6 @@
 (function() {
     const $phoneInput = document.getElementById('phone-input');
+    const $phoneInputLabel = document.getElementById('phone-wrap');
     const $phoneInputValidMark = document.getElementById('phone-valitdate');
     const $phoneInputRemoveBtn = document.getElementById('phone-remove');
 
@@ -29,7 +30,8 @@
         $phoneInputValidMark.style.display = 'none';
     })
 
-    $phoneInput.addEventListener('focusout', () => {
+    window.addEventListener('click', (e) => {
+        if (e.target.closest('label') === $phoneInputLabel) return;
         $phoneInputRemoveBtn.style.display = 'none';
         changePhoneInputValidState();
     })
