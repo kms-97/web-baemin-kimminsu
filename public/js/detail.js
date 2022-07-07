@@ -148,4 +148,29 @@
     allInputs.forEach(el => el.addEventListener('blur', () => {
         changeNextBtnState();
     }))
+
+    $nextBtn.addEventListener('click', async () => {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: $emailInput.value,
+                password: $passwordInput.value,
+                nickname: $nicknameInput.value,
+                birth: $birthInput.value,
+            })
+        }
+
+        try {
+            const response = await fetch('/signup', options);
+
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    })
 })();
