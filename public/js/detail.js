@@ -11,10 +11,28 @@
     const $birthInput = document.getElementById('birth-input');
     const $birthErrorMsg = document.getElementById('birth-error');
     const $birthValidMark = document.getElementById('birth-validate');
+    const $nextBtn = document.getElementById('header-nextBtn');
+    const allInputs = document.querySelectorAll('input');
 
     function inputError($input, $errMsg, msg) {
         $errMsg.innerText = msg;
         $input.classList.add('err');
+        $input.classList.remove('valid');
+    }
+
+    function deleteError($input, $errMsg) {
+        $errMsg.innerText = '';
+        $input.classList.remove('err');
+    }
+
+    function showValidMark($input, $validMark, display) {
+        $input.classList.add('valid');
+        $validMark.style.display = display;
+    }
+
+    function hideValidMark($input, $validMark) {
+        $input.classList.remove('valid');
+        $validMark.style.display = 'none';
     }
 
     function isOverLength(str, length = 10) {
@@ -51,8 +69,8 @@
 
     function dateValidation() {
         const dateInput = $birthInput.value;
-        if (dateInput.length !== 10) return $birthValidMark.style.display = 'none';
-        if (!isDateFormat(dateInput)) return $birthValidMark.style.display = 'none';
+        if (dateInput.length !== 10) return hideValidMark($birthInput, $birthValidMark);
+        if (!isDateFormat(dateInput)) return hideValidMark($birthInput, $birthValidMark);
         
         const date = new Date(dateInput.split('.').join('-'));
         const timestamp = date.getTime();
@@ -60,9 +78,8 @@
             return inputError($birthInput, $birthErrorMsg, '유효한 날짜를 입력해주세요.');
         }
     
-        $birthErrorMsg.innerText = '';
-        $birthInput.classList.remove('err');
-        $birthValidMark.style.display = 'inline-block';
+        deleteError($birthInput, $birthErrorMsg);
+        showValidMark($birthInput, $birthValidMark, 'inline-block')
     }
 
     function insertDot(str) {
@@ -82,18 +99,29 @@
         return str;
     }
 
+    function isAllValid() {
+        return ![...allInputs].map(input => input.classList.contains('valid')).includes(false);
+    }
+
+    function changeNextBtnState() {
+        if(isAllValid()) $nextBtn.removeAttribute('disabled');
+        else $nextBtn.setAttribute('disabled', true);
+    }
+
     $emailDuplicationCheckBtn.addEventListener('click', () => {
         const email = $emailInput.value;
         if (!email) return;
 
-        $emailValidMark.style.display = 'block';
+        showValidMark($emailInput, $emailValidMark, 'block');
         $additionalInfo.style.display = 'block';
     })
 
     $nicknameInput.addEventListener('change', () => {
         const nickname = $nicknameInput.value;
-        if (nickname) $nicknameValidMark.style.display = 'block';
-        else $nicknameValidMark.style.display = 'none';
+        if (nickname) {
+            showValidMark($nicknameInput, $nicknameValidMark, 'block');
+        }
+        else hideValidMark($nicknameInput, $nicknameValidMark);
     })
 
     $passwordInput.addEventListener('change', () => {
@@ -103,9 +131,8 @@
         if (!isContainsLeastTwoType(password)) return inputError($passwordInput, $passwordErrorMsg, '영어 대문자, 소문자, 숫자, 특수문자 중 2종류 이상을 조합해야 합니다.');
         if (isContainSameNumber(password) || isContainLinkedNumber(password)) return inputError($passwordInput, $passwordErrorMsg, '같은 숫자 또는 연속된 숫자를 3개 이상 입력할 수 없습니다.');
 
-        $passwordErrorMsg.value = '';
-        $passwordInput.classList.remove('err');
-        $passwordValidMark.style.display = 'block';
+        deleteError($passwordInput, $passwordErrorMsg);
+        showValidMark($passwordInput, $passwordValidMark, 'inline-block');
     })
 
     $birthInput.addEventListener('keyup', (e) => {
@@ -117,4 +144,8 @@
 
         dateValidation();
     })
+
+    allInputs.forEach(el => el.addEventListener('blur', () => {
+        changeNextBtnState();
+    }))
 })();
