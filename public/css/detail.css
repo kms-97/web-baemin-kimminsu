@@ -45,6 +45,11 @@
     opacity: 0.75;
 }
 
+/* additional info */
+#additional {
+    display: none;
+}
+
 /* input form */
 label {
     position: relative;
