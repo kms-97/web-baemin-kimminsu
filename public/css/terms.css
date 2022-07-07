@@ -154,3 +154,7 @@ input:checked + .radiomark {
     background-color: var(--mint);
     border-radius: 10px;
 }
+
+#next-nextBtn:disabled {
+    background-color: var(--grey);
+}
