@@ -7,6 +7,7 @@
     const $confirmSection = document.getElementById('confirm');
     const $confirmInput = document.getElementById('confirm-input');
     const $confirmRetry = document.getElementById('confirm-retry');
+    const $confirmValidMark = document.getElementById('confirm-valitdate');
     let confirmNumber = '';
 
     function removeNotNumberChar(str) {
@@ -41,6 +42,7 @@
         setTimeout(() => {
             confirmNumber = generateRandomNumber();
             $confirmInput.value = confirmNumber;
+            $confirmInput.dispatchEvent(new Event('input', {bubbles:true}));
         }, 2000);
     }
 
@@ -75,5 +77,14 @@
 
     $confirmRetry.addEventListener('click', () => {
         insertRandomNumberAfter2Seconds();
+    })
+
+    $confirmInput.addEventListener('input', () => {
+        console.log(confirmNumber, $confirmInput.value)
+        if (confirmNumber === $confirmInput.value) {
+            $confirmValidMark.style.display = 'block';
+        } else {
+            $confirmValidMark.style.display = 'none';
+        }
     })
 })();
