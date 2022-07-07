@@ -45,56 +45,40 @@
     opacity: 0.75;
 }
 
-/* phone input */
-#phone {
-    margin-top: 40px;
-}
-
-#phone-wrap {
+/* input form */
+label {
     position: relative;
     display: flex;
     flex-direction: column;
-}
-
-#phone-wrap input {
-    height: 40px;
-    border-bottom: solid 1px var(--grey);
-    font-size: 16px;
-}
-
-/* confirm input */
-#confirm {
     margin-top: 40px;
 }
 
-#confirm-input-wrap {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-#confirm-input-wrap input {
+input {
     height: 40px;
     border-bottom: solid 1px var(--grey);
     font-size: 16px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    margin-right: 5px;
 }
 
-#confirm-retry {
-    margin-top: 20px;
-    text-align: end;
-    color: var(--mint);
+/* email */
+#email-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
 }
 
-#confirm-start-btn {
-    height: 50px;
-    width: 100%;
-    margin-top: 30px;
-    font-size: 16px;
+#email-label {
+    width: 270px;
+}
+
+#email-duplicate {
+    box-sizing: border-box;
+    width: 85px;
     border: 1px solid var(--grey);
-    border-radius: 10px;
+    padding: 7px 0;
+    border-radius: 0.35rem;
+    cursor: pointer;
 }
 
 /* validate mark */
