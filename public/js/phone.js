@@ -35,4 +35,8 @@
         $phoneInputRemoveBtn.style.display = 'none';
         changePhoneInputValidState();
     })
+
+    $phoneInputRemoveBtn.addEventListener('click', () => {
+        $phoneInput.value = '';
+    })
 })();
