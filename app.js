@@ -7,6 +7,7 @@ import {signupRouter} from './router/signup.js'
 
 const app = express();
 const SECRET = 'randomString';
+const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'pug');
 
@@ -28,4 +29,4 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 
-app.listen(3000);
+app.listen(PORT);
