@@ -1,0 +1,39 @@
+extends base.pug
+block css
+    link(rel="stylesheet", href="/css/phone.css")
+
+block js
+    script(src="/js/phone.js" defer) 
+
+block content
+    header#header
+        a(href='javascript:window.history.back();')
+            button#header-backwardBtn
+                img(src='../img/arrow.svg')
+        div.container
+            div#header-wrap
+                div#header-title 회원가입
+        a(href='/signup/detail')
+            button#header-nextBtn(disabled) 다음
+    section#phone
+        div.container
+            label#phone-wrap
+                | 휴대전화
+                input(type='tel', placeholder='000-0000-0000', maxlength='13')#phone-input
+                div#phone-valitdate.validate
+                button#phone-remove.remove
+                    img(src='../img/cancel.png')
+    section#confirm
+        div.container
+            label#confirm-input-wrap
+                | 인증번호
+                input(type='tel', maxlength='4')#confirm-input
+                div#confirm-valitdate.validate
+                button#confirm-remove.remove
+                    img(src='../img/cancel.png')
+            div#confirm-retry 인증번호 다시받기
+    section
+        div.container
+            div#confirm-start-wrap
+                button#confirm-start-btn(disabled) 인증번호 받기
+

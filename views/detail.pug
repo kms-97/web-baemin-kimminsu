@@ -1,0 +1,55 @@
+extends base.pug
+block css
+    link(rel="stylesheet", href="/css/detail.css")
+
+block js
+    script(src="/js/detail.js" defer) 
+
+block content
+    header#header
+        a(href='javascript:window.history.back();') 
+            button#header-backwardBtn
+                img(src='../img/arrow.svg')
+        div.container
+            div#header-wrap
+                div#header-title 회원가입
+        button#header-nextBtn(disabled) 완료
+    section#email
+        div.container
+            div#email-wrap
+                label#email-label
+                    | 이메일
+                    input(type='email')#email-input
+                    div#email-validate.validate
+                    button#email-remove.remove
+                        img(src='../img/cancel.png')
+                button#email-duplicate 중복확인
+    div#additional
+        section#nickname
+            div.container
+                label#nickname-wrap
+                    | 닉네임
+                    input(type='text')#nickname-input
+                    div#nickname-validate.validate
+                    button#nickname-remove.remove
+                        img(src='../img/cancel.png')
+        section#password
+            div.container
+                label#password-wrap
+                    | 비밀번호
+                    input(type='password')#password-input
+                    div#password-error.error-msg
+                    div#password-validate.validate
+                    button#password-remove.remove
+                        img(src='../img/cancel.png')
+        section#birth
+            div.container
+                label#birth-wrap
+                    | 생년월일
+                    input(type='text' maxlength='10')#birth-input
+                    div#birth-error.error-msg
+                    div#birth-validate.validate
+                    button#birth-remove.remove
+                        img(src='../img/cancel.png')
+
+

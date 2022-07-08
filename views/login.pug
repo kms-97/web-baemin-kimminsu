@@ -1,0 +1,44 @@
+extends base.pug
+block css
+    link(rel="stylesheet", href="css/login.css")
+
+block js
+    script(src="js/login.js" defer) 
+
+block content
+    header#header
+        a(href='/')
+            button#header-cancelBtn
+                img(src='../img/cancel.png')
+        div.container
+            div#header-wrap
+                div#header-title
+    section#login
+        div.container
+            form#login-form
+                input(type='text', placeholder='아이디 또는 이메일')#login-form-email
+                div#login-email-error.error-msg
+                input(type='password', placeholder='비밀번호')#login-form-password
+                div#login-password-error.error-msg
+                button(type='submit')#login-form-submitBtn 로그인
+    section#find
+        div.container
+            div#find-wrap
+                div#find-id 아이디 찾기
+                div |
+                div#find-password 비밀번호 찾기
+    section#social
+        div.container
+            div#social-facebook.social-item
+                img(src='../img/facebook.png').social-logo
+                | 페이스북으로 로그인
+            div#social-naver.social-item
+                img(src='../img/naver.png').social-logo
+                | 네이버로 로그인
+            div#social-apple.social-item
+                img(src='../img/apple.png').social-logo
+                | Apple로 로그인
+    section#signup
+        div.container
+            | 혹시, 배달의민족이 처음이신가요?
+            a(href='/signup/terms') 회원가입

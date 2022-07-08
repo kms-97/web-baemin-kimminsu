@@ -1,0 +1,30 @@
+{
+  "name": "web-baemin-kimminsu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon ./app.js --ignore db.json"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woowa-techcamp-2022/web-baemin-kimminsu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woowa-techcamp-2022/web-baemin-kimminsu/issues"
+  },
+  "homepage": "https://github.com/woowa-techcamp-2022/web-baemin-kimminsu#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "lowdb": "^3.0.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

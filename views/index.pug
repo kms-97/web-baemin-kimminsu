@@ -1,0 +1,66 @@
+extends base.pug
+block css
+    link(rel="stylesheet", href="/css/index.css")
+
+block content
+    header#header
+        div.container
+            div#header-wrap
+                div#header-title My배민
+    section#banner
+        img(src='../img/banner.png')
+    if nickname
+        section#user
+            div.container
+                div#user-wrap
+                    img#user-thumbnail(src='../img/user.png')
+                    div#user-nickname 안녕하세요, #{nickname}님!
+    else
+        section#login
+            a(href='/login')
+                div.container
+                    div#login-wrap
+                        img#login-thumbnail(src='../img/user.png')
+                        div#login-title 로그인해주세요 
+    nav#nav
+        ul#nav-items
+            li.nav-item 
+                img.nav-item-icon(src='../img/point.png')
+                div.nav-item-title 포인트
+            li.nav-item 
+                img.nav-item-icon(src='../img/coupon.png')
+                div.nav-item-title 쿠폰함
+            li.nav-item
+                img.nav-item-icon(src='../img/present.png')
+                div.nav-item-title 선물함
+            li.nav-item
+                img.nav-item-icon(src='../img/cart.png')
+                div.nav-item-title 찜
+            li.nav-item
+                img.nav-item-icon(src='../img/order.png')
+                div.nav-item-title 주문내역
+            li.nav-item
+                img.nav-item-icon(src='../img/review.png')
+                div.nav-item-title 리뷰관리
+    hr.seperator
+    section#campaign
+        div.container
+            div#compaign-wrap
+                img#campaign-icon(src='../img/root.png')
+                div#campaign-title 일회용품 덜 쓰기, 함께해요!
+    hr.seperator
+    section#notice
+        div.notice-item
+            div.container
+                div.notice-item-title.new 배민페이 등록
+                div.notice-item-desc 배민페이로 결제하면 최대 5.5% 배민포인트가 적립됩니다!
+        div.notice-item 
+            div.container
+                div.notice-item-title.new 가족계정 관리
+                div.notice-item-desc 결제수단을 공유해 우리 가족의 끼니를 챙겨주세요.
+        div.notice-item 
+            div.container
+                div.notice-item-title 공지사항
+        div.notice-item 
+            div.container
+                div.notice-item-title 배민커넥트 지원

@@ -1,0 +1,54 @@
+/* color variable */
+:root {
+    --grey: rgb(180 180 180);
+    --mint: #28c1bc;
+    --light-grey: #f6f6f6
+}
+
+html {
+    background-color: var(--light-grey);
+}
+
+body {
+    width: 400px;
+    height: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid black;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+hr {
+    border: none;
+    border-bottom: solid var(--grey) 0.5px;
+    margin: 0;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+button, input {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+}
+
+input:focus {
+    outline: none;
+}
+
+.container {
+    width: 360px;
+    margin: 0 auto;
+}
