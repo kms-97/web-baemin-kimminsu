@@ -108,21 +108,21 @@
         else $nextBtn.setAttribute('disabled', true);
     }
 
-    $emailDuplicationCheckBtn.addEventListener('click', () => {
+    function validateEmail() {
         const email = $emailInput.value;
         if (!email) return;
 
         showValidMark($emailInput, $emailValidMark, 'block');
         $additionalInfo.style.display = 'block';
-    })
+    }
 
-    $nicknameInput.addEventListener('change', () => {
+    function validateNickname() {
         const nickname = $nicknameInput.value;
         if (nickname) showValidMark($nicknameInput, $nicknameValidMark, 'block');
         else hideValidMark($nicknameInput, $nicknameValidMark);
-    })
+    }
 
-    $passwordInput.addEventListener('change', () => {
+    function validatePassword() {
         const password = $passwordInput.value;
 
         if (!isOverLength(password, 10)) {
@@ -142,9 +142,9 @@
         
         deleteError($passwordInput, $passwordErrorMsg);
         showValidMark($passwordInput, $passwordValidMark, 'inline-block');
-    })
+    }
 
-    $birthInput.addEventListener('keyup', (e) => {
+    function formatBirth() {
         if(e.key !== "Backspace") {
             const birth = $birthInput.value;
             const numStr = removeNotNumberOrDotChar(birth);
@@ -152,12 +152,19 @@
         }
 
         dateValidation();
-    })
+    }
 
-    allInputs.forEach(el => el.addEventListener('blur', () => {
-        changeNextBtnState();
-    }))
+    $emailDuplicationCheckBtn.addEventListener('click', validateEmail);
 
+    $nicknameInput.addEventListener('change', validateNickname);
+
+    $passwordInput.addEventListener('change', validatePassword);
+
+    $birthInput.addEventListener('keyup', formatBirth);
+
+    allInputs.forEach(el => el.addEventListener('blur', changeNextBtnState));
+
+    // 회원가입 요청 fetch
     $nextBtn.addEventListener('click', async () => {
         const options = {
             method: 'POST',

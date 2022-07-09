@@ -7,7 +7,7 @@
     const $confirmSection = document.getElementById('confirm');
     const $confirmInput = document.getElementById('confirm-input');
     const $confirmRetry = document.getElementById('confirm-retry');
-    const $confirmValidMark = document.getElementById('confirm-valitdate');
+    const $confirmInputValidMark = document.getElementById('confirm-valitdate');
     const $confirmInputRemoveBtn = document.getElementById('confirm-remove');
     const $confirmInputLabel = document.getElementById('confirm-input-wrap');
     const $nextBtn = document.getElementById('header-nextBtn');
@@ -27,10 +27,10 @@
 
     function changeConfirmInputValidState() {
         if (confirmNumber && confirmNumber === $confirmInput.value) {
-            $confirmValidMark.style.display = 'block';
+            $confirmInputValidMark.style.display = 'block';
             changeNextBtnState(true);
         } else {
-            $confirmValidMark.style.display = 'none';
+            $confirmInputValidMark.style.display = 'none';
             changeNextBtnState(false);
         }
     }
@@ -64,55 +64,61 @@
         }, 2000);
     }
 
-    $phoneInput.addEventListener('keyup', () => {
+    function formatPhoneNumber() {
         const numStr = removeNotNumberChar($phoneInput.value);
         $phoneInput.value = insertHyhpen(numStr);
-    })
+    }
 
-    $phoneInput.addEventListener('focusin', () => {
-        $phoneInputRemoveBtn.style.display = 'block';
-        $phoneInputValidMark.style.display = 'none';
-    })
+    function focusInput($input) {
+        const mapping = {
+            $phoneInput: [$phoneInputRemoveBtn, $phoneInputValidMark],
+            $confirmInput: [$confirmInputRemoveBtn, $confirmInputValidMark]
+        }
+        const [$removeBtn, $validMark] = mapping[$input];
+        $removeBtn.style.display = 'block';
+        $validMark.style.display = 'none';
+    }
 
-    window.addEventListener('click', (e) => {
-        if (e.target.closest('label') === $phoneInputLabel) return;
-        $phoneInputRemoveBtn.style.display = 'none';
-        changePhoneInputValidState();
-    })
+    function blurInput(e) {
+        if (e.target.closest('label') !== $phoneInputLabel) {
+            $phoneInputRemoveBtn.style.display = 'none';
+            changePhoneInputValidState();
+        }
 
-    $phoneInputRemoveBtn.addEventListener('click', () => {
-        $phoneInput.value = '';
-    })
+        if (e.target.closest('label') !== $confirmInputLabel) {
+            $confirmInputRemoveBtn.style.display = 'none';
+            changeConfirmInputValidState();
+        };
+    }
 
-    $confirmStartBtn.addEventListener('click', () => {
+    function displayConfirmSection() {
         $confirmStartBtn.style.display = 'none';
         $phoneInput.setAttribute('readonly', true);
         $phoneInput.setAttribute('disabled', true);
         $confirmSection.style.display = 'block';
 
         insertRandomNumberAfter2Seconds();
+    }
+
+    $phoneInput.addEventListener('keyup', formatPhoneNumber);
+
+    $phoneInput.addEventListener('focusin', () => focusInput($phoneInput));
+
+    window.addEventListener('click', blurInput);
+
+    $phoneInputRemoveBtn.addEventListener('click', () => {
+        $phoneInput.value = '';
     })
 
-    $confirmRetry.addEventListener('click', () => {
-        insertRandomNumberAfter2Seconds();
-    })
+    $confirmStartBtn.addEventListener('click', displayConfirmSection);
+
+    $confirmRetry.addEventListener('click', insertRandomNumberAfter2Seconds);
 
     $confirmInputRemoveBtn.addEventListener('click', () => {
         $confirmInput.value = '';
-    })
+    });
 
-    $confirmInput.addEventListener('input', () => {
-        changeConfirmInputValidState();
-    })
+    $confirmInput.addEventListener('input', changeConfirmInputValidState);
 
-    $confirmInput.addEventListener('focusin', () => {
-        $confirmInputRemoveBtn.style.display = 'block';
-        $confirmValidMark.style.display = 'none';
-    })
-
-    window.addEventListener('click', (e) => {
-        if (e.target.closest('label') === $confirmInputLabel) return;
-        $confirmInputRemoveBtn.style.display = 'none';
-        changeConfirmInputValidState();
-    })
+    $confirmInput.addEventListener('focusin', () => focusInput($confirmInput));
 })();

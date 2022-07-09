@@ -51,21 +51,18 @@
     // 각 항목 클릭시 전체동의 버튼 활성화/비활성화
     $termSection.addEventListener('click', (e) => {
         const term = e.target.closest('label');
-        if (!term) return;
-        else changeAllAgreeBoxState(isAllBoxChecked());
+        if (term) changeAllAgreeBoxState(isAllBoxChecked());
     })
 
     // 각 항목 클릭시 다음 페이지 버튼 활성화/비활성화
     $termSection.addEventListener('click', (e) => {
         const $termLabel = e.target.closest('label');
-        if (!$termLabel) return;
-        else changeNextBtnActivateState(!isAllRequiredTermsChecked());
+        if ($termLabel) changeNextBtnActivateState(!isAllRequiredTermsChecked());
     })
 
     // 나이 선택시 다음 페이지 버튼 활성화/비활성화
     $ageSection.addEventListener('click', (e) => {
         const $ageLabel = e.target.closest('label');
-        if (!$ageLabel) return;
-        else changeNextBtnActivateState(!isAllRequiredTermsChecked());
+        if ($ageLabel) changeNextBtnActivateState(!isAllRequiredTermsChecked());
     })
 })();

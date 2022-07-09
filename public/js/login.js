@@ -24,6 +24,7 @@
         deleteError($inputPassword, $passwordErrorMsg);
     })
 
+    // 로그인 요청 fetch
     $submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         deleteError($inputEmail, $inputErrorMsg);
