@@ -144,7 +144,7 @@
         showValidMark($passwordInput, $passwordValidMark, 'inline-block');
     }
 
-    function formatBirth() {
+    function formatBirth(e) {
         if(e.key !== "Backspace") {
             const birth = $birthInput.value;
             const numStr = removeNotNumberOrDotChar(birth);
