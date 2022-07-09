@@ -105,8 +105,3 @@ input.err {
     margin-left: 5px;
     color: var(--mint);
 }
-
-/* 에러 메세지 */
-.error-msg {
-    color: red;
-}
