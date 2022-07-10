@@ -5,8 +5,10 @@
     const $passwordErrorMsg = document.getElementById('login-password-error');
     const $loginErrorMsg = document.getElementById('login-error');
     const $submitBtn = document.getElementById('login-form-submitBtn');
+    let errorState = false;
 
     function inputError($input, $errMsg, msg) {
+        errorState = true;
         $errMsg.innerText = msg;
         if ($input) {
             $input.classList.add('err');
@@ -15,6 +17,7 @@
     }
 
     function deleteError($input, $errMsg) {
+        errorState = false;
         $errMsg.innerText = '';
         if($input) $input.classList.remove('err');
     }
@@ -41,6 +44,8 @@
     // 로그인 요청 fetch
     $submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
+        
+        if (errorState) return;
         deleteError($inputEmail, $inputErrorMsg);
         deleteError($inputPassword, $passwordErrorMsg);
         deleteError(null, $loginErrorMsg);
