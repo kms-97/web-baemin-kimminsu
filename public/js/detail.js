@@ -1,6 +1,7 @@
 (function() {
     const $emailDuplicationCheckBtn = document.getElementById('email-duplicate');
     const $emailInput = document.getElementById('email-input');
+    const $emailErrorMsg = document.getElementById('email-error');
     const $emailValidMark = document.getElementById('email-validate');
     const $additionalInfo = document.getElementById('additional');
     const $nicknameInput = document.getElementById('nickname-input');
@@ -112,10 +113,16 @@
         /* https://stackoverflow.com/a/46181 */
         const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         const email = $emailInput.value;
+        const errorMsg = '올바른 이메일 형식이 아닙니다.';
 
-        if (!emailRegex.test(email)) return;
-        showValidMark($emailInput, $emailValidMark, 'block');
-        $additionalInfo.style.display = 'block';
+        if (!emailRegex.test(email)) {
+            inputError($emailInput, $emailErrorMsg, errorMsg);
+            hideValidMark($emailInput, $emailValidMark);
+        } else {
+            deleteError($emailInput, $emailErrorMsg);
+            showValidMark($emailInput, $emailValidMark, 'block');
+            $additionalInfo.style.display = 'block';
+        }
     }
 
     function validateNickname() {
