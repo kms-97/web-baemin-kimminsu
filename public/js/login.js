@@ -19,6 +19,15 @@
         if($input) $input.classList.remove('err');
     }
 
+    function validateEmail() {
+        /* https://stackoverflow.com/a/46181 */
+        const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        const email = $inputEmail.value;
+        const errMsg = '올바른 이메일 형식이 아닙니다.';
+
+        if (!emailRegex.test(email)) inputError($inputEmail, $inputErrorMsg, errMsg);
+    }
+
     $inputEmail.addEventListener('focusin', () => {
         deleteError($inputEmail, $inputErrorMsg);
     })
@@ -26,6 +35,8 @@
     $inputPassword.addEventListener('focusin', () => {
         deleteError($inputPassword, $passwordErrorMsg);
     })
+
+    $inputEmail.addEventListener('blur', validateEmail);
 
     // 로그인 요청 fetch
     $submitBtn.addEventListener('click', async (e) => {
