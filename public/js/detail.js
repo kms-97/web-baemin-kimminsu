@@ -109,9 +109,11 @@
     }
 
     function validateEmail() {
+        /* https://stackoverflow.com/a/46181 */
+        const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         const email = $emailInput.value;
-        if (!email) return;
 
+        if (!emailRegex.test(email)) return;
         showValidMark($emailInput, $emailValidMark, 'block');
         $additionalInfo.style.display = 'block';
     }
