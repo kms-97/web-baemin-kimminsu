@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon ./app.js --ignore db.json"
+    "test": "nodemon ./app.js --ignore db.json",
+    "start": "node app.js"
   },
   "type": "module",
   "repository": {
