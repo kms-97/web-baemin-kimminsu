@@ -121,6 +121,8 @@
         } else {
             deleteError($emailInput, $emailErrorMsg);
             showValidMark($emailInput, $emailValidMark, 'block');
+            $emailInput.setAttribute('readonly', true);
+            $emailInput.setAttribute('disabled', true);
             $additionalInfo.style.display = 'block';
         }
     }
