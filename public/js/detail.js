@@ -1,6 +1,7 @@
 (function() {
     const $emailDuplicationCheckBtn = document.getElementById('email-duplicate');
     const $emailInput = document.getElementById('email-input');
+    const $emailErrorMsg = document.getElementById('email-error');
     const $emailValidMark = document.getElementById('email-validate');
     const $additionalInfo = document.getElementById('additional');
     const $nicknameInput = document.getElementById('nickname-input');
@@ -108,21 +109,31 @@
         else $nextBtn.setAttribute('disabled', true);
     }
 
-    $emailDuplicationCheckBtn.addEventListener('click', () => {
+    function validateEmail() {
+        /* https://stackoverflow.com/a/46181 */
+        const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         const email = $emailInput.value;
-        if (!email) return;
+        const errorMsg = '올바른 이메일 형식이 아닙니다.';
 
-        showValidMark($emailInput, $emailValidMark, 'block');
-        $additionalInfo.style.display = 'block';
-    })
+        if (!emailRegex.test(email)) {
+            inputError($emailInput, $emailErrorMsg, errorMsg);
+            hideValidMark($emailInput, $emailValidMark);
+        } else {
+            deleteError($emailInput, $emailErrorMsg);
+            showValidMark($emailInput, $emailValidMark, 'block');
+            $emailInput.setAttribute('readonly', true);
+            $emailInput.setAttribute('disabled', true);
+            $additionalInfo.style.display = 'block';
+        }
+    }
 
-    $nicknameInput.addEventListener('change', () => {
+    function validateNickname() {
         const nickname = $nicknameInput.value;
         if (nickname) showValidMark($nicknameInput, $nicknameValidMark, 'block');
         else hideValidMark($nicknameInput, $nicknameValidMark);
-    })
+    }
 
-    $passwordInput.addEventListener('change', () => {
+    function validatePassword() {
         const password = $passwordInput.value;
 
         if (!isOverLength(password, 10)) {
@@ -142,9 +153,9 @@
         
         deleteError($passwordInput, $passwordErrorMsg);
         showValidMark($passwordInput, $passwordValidMark, 'inline-block');
-    })
+    }
 
-    $birthInput.addEventListener('keyup', (e) => {
+    function formatBirth(e) {
         if(e.key !== "Backspace") {
             const birth = $birthInput.value;
             const numStr = removeNotNumberOrDotChar(birth);
@@ -152,12 +163,19 @@
         }
 
         dateValidation();
-    })
+    }
 
-    allInputs.forEach(el => el.addEventListener('blur', () => {
-        changeNextBtnState();
-    }))
+    $emailDuplicationCheckBtn.addEventListener('click', validateEmail);
 
+    $nicknameInput.addEventListener('change', validateNickname);
+
+    $passwordInput.addEventListener('change', validatePassword);
+
+    $birthInput.addEventListener('keyup', formatBirth);
+
+    allInputs.forEach(el => el.addEventListener('blur', changeNextBtnState));
+
+    // 회원가입 요청 fetch
     $nextBtn.addEventListener('click', async () => {
         const options = {
             method: 'POST',
