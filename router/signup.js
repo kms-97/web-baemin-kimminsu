@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllUsers, registUser, getUserByEmail } from '../dao/userDao.js';
+import userController from '../controller/userController.js';
 
 export const signupRouter = express.Router();
 
@@ -15,8 +15,4 @@ signupRouter.get('/detail', (req, res) => {
     res.render('detail');
 })
 
-signupRouter.post('/', (req, res) => {
-    const user = req.body;
-    registUser(user);
-    res.redirect('/login');
-})
+signupRouter.post('/', userController.signup);
